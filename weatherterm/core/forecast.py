@@ -4,8 +4,8 @@ from .forecast_type import ForecastType
 
 
 class Forecast:
-    def __init__(self, 
-                 current_temp, 
+    def __init__(self,
+                 current_temp,
                  humidity,
                  wind,
                  high_temp=None,
@@ -30,7 +30,7 @@ class Forecast:
     def forecast_date(self):
         return self._forecast_date
 
-    @forcast_date.setter
+    @forecast_date.setter
     def forecast_date(self, forecast_date):
         self._forecast_date = forecast_date.strftime("%a %b %d")
 

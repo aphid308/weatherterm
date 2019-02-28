@@ -2,15 +2,18 @@ import sys
 from argparse import ArgumentParser
 
 from weatherterm.core import parser_loader
-from weatherterm.core import ForecaseType
+from weatherterm.core import ForecastType
 from weatherterm.core import Unit
 
 
 def _validate_forecast_args(args):
     if args.forecast_option is None:
-        err_msg = ('One of these arguments must be used:  -td/--today, -5d/--fivedays, -10d/--tendays, -w/--weekend')
+        err_msg = ("""One of these arguments must be used:
+                   -td/--today, -5d/--fivedays,
+                   -10d/--tendays, -w/--weekend""")
         print(f"{argparser.prog}: error: {err_msg}", file=sys.stderr)
         sys.exit()
+
 
 parsers = parser_loader.load('./weatherterm/parsers')
 
@@ -39,7 +42,7 @@ argparser.add_argument('-u', '--unit',
 required.add_argument('-a', '--areacode',
                       required=True,
                       dest='area_code',
-                      help("""The code area to get the weather
+                      help=("""The code area to get the weather
                            forecast from. It can be obtained at
                            https://weather.com"""))
 
@@ -50,7 +53,7 @@ argparser.add_argument('--v', '--version',
 argparser.add_argument('-td', '--today',
                        dest='forecast_option',
                        action='store_const',
-                       const=ForecaseType.TODAY,
+                       const=ForecastType.TODAY,
                        help="""Show the weather forecast for
                        the current day""")
 
@@ -64,7 +67,3 @@ parser = cls()
 results = parser.run(args)
 for result in results:
     print(result)
-
-
-
-
