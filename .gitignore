@@ -1,2 +1,3 @@
 weatherterm_env/*
 weatherterm/core/__pycache__
+weatherterm/__pycache__
