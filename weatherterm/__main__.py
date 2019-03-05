@@ -4,6 +4,7 @@ from argparse import ArgumentParser
 from weatherterm.core import parser_loader
 from weatherterm.core import ForecastType
 from weatherterm.core import Unit
+from weatherterm.core import SetUnitAction
 
 
 def _validate_forecast_args(args):
@@ -35,6 +36,7 @@ unit_values = [name.title() for name, value in Unit.__members__.items()]
 argparser.add_argument('-u', '--unit',
                        choices=unit_values,
                        required=False,
+                       action=SetUnitAction
                        dest='unit',
                        help=("""Specify the unit that will be used to
                              display the temperatures."""))
